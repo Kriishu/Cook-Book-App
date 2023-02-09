@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Spaghetti Carbonara",
+    "cookingTime": 30,
+    "description": "A classic Italian pasta dish made with eggs, pancetta, and Pecorino Romano cheese."
+  },
+  {
+    "id": 2,
+    "name": "Grilled Cheese Sandwich",
+    "cookingTime": 10,
+    "description": "A simple and delicious sandwich made with bread and melted cheese."
+  }
+]
