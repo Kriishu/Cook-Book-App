@@ -1,0 +1,13 @@
+.recipe-details {
+    text-align: center;
+    margin: 50px;
+  }
+  
+  .recipe-details h1 {
+    font-size: 36px;
+  }
+  
+  .recipe-details p {
+    font-size: 24px;
+  }
+  

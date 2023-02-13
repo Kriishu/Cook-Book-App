@@ -1,3 +1,4 @@
+*{ margin: 0%; }
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -5,6 +6,8 @@
     padding: 20px;
     background-color: blueviolet;
     color: #fff;
+ 
+    
   }
   
   .navbar-search {

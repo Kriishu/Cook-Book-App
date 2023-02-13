@@ -13,6 +13,7 @@
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    overflow: hidden;
   }
   
   .cook-button {
@@ -22,5 +23,11 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+  .cook-button:hover{
+    background-color: grey;
+    color:white;
+    
   }
   

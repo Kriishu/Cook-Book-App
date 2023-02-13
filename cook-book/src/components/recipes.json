@@ -1,14 +1,24 @@
+
 [
+
+
   {
     "id": 1,
-    "name": "Spaghetti Carbonara",
+    "name": "Spaghetti Bolognese",
     "cookingTime": 30,
-    "description": "A classic Italian pasta dish made with eggs, pancetta, and Pecorino Romano cheese."
+    "description": "A classic pasta dish made with a rich meat sauce."
   },
   {
     "id": 2,
-    "name": "Grilled Cheese Sandwich",
-    "cookingTime": 10,
-    "description": "A simple and delicious sandwich made with bread and melted cheese."
+    "name": "Pancakes",
+    "cookingTime": 20,
+    "description": "A stack of fluffy, golden-brown pancakes served with syrup and butter."
+  },
+  {
+    "id": 3,
+    "name": "Chicken Stir-Fry",
+    "cookingTime": 25,
+    "description": "A quick and healthy one-pan meal with veggies and your choice of protein."
   }
 ]
+
