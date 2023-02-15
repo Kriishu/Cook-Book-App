@@ -1,6 +1,8 @@
 import { useState } from "react";
 import {useNavigate } from "react-router-dom";
 import { useAPI } from "../context/Context";
+import "../styles/CreateRecipe.css"
+
 
 const CreateRecipe = () => {
   const [title, setTitle] = useState('');
@@ -35,29 +37,29 @@ const CreateRecipe = () => {
 
   return (
     <div className="create">
-      <h2>New recipe</h2>
+      <h2>New recipe:</h2>
       <form onSubmit={handleSubmit}>
-        <label>Recipe name: </label>
+        <label className="name">Recipe name: </label>
         <input 
           type="text" 
           required 
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label>Description:</label>
+        <label className="description">Description:</label>
         <input 
           type="text" 
           required 
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label>Recipe ingredients:</label>
+        <label className="ingredients">Recipe ingredients:</label>
         <input
           type="text"
           value={ingredients}
           onChange={(e) => setIngredients(e.target.value)}
         />
-        <button type="button" onClick={handleIngredients}>Add</button>
+        <button className="submitButton" type="button" onClick={handleIngredients}>Add</button>
         <p>Current ingredients: {listIngredients.toString()}</p>
         <label>Recipe method:</label>
         <textarea
@@ -65,7 +67,7 @@ const CreateRecipe = () => {
         value={method}
         onChange={(e) => setMethod(e.target.value)}
         />
-        <label>Cooking time (in minutes):</label>
+        <label className="time">Cooking time (in minutes):</label>
         <input
         type="number"
         min="0"

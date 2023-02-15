@@ -6,9 +6,11 @@ import { RecipeContextProvider } from './components/context/Context';
 import RecipeDetails from './components/pages/RecipeDetails';
 import CreateRecipe from './components/pages/CreateRecipe';
 
+
 function App() {
   return (
     <RecipeContextProvider>
+      
     <Router>
       <Navbar/>
       <Routes>
@@ -17,6 +19,7 @@ function App() {
         <Route path="/recipes/:id" element={<RecipeDetails/>} />
       </Routes>
     </Router>
+    
     </RecipeContextProvider>
   );
 }
