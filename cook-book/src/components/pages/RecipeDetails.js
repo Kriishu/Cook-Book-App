@@ -1,11 +1,11 @@
 import {useParams } from "react-router-dom";
-import { useAPI } from "../context/useContext";
-import useFetch from "../useFetch";
+import { useAPI } from "../context/Context";
+import Fetch from "../data/Fetch";
 import "../styles/RecipeDetails.css"
 const RecipeDetails = () => {
     const {id} = useParams()
     const {url} = useAPI()
-    const {data: recipe, error, isPending} = useFetch(url + id)
+    const {data: recipe, error, isPending} = Fetch(url + id)
 
     return (
         <div className="recipe-details">

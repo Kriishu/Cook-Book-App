@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
 
-const APIContext = createContext();
+const RecipeContext = createContext();
 
-export function APIContextProvider({ children }) {
+export function RecipeContextProvider({ children }) {
   const [ recipes, setRecipes ] = useState([]);
   const [ isPending, setIsPending ] =  useState(false);
   const [ url, setUrl ] = useState('http://localhost:3000/recipes/')
@@ -23,7 +23,7 @@ export function APIContextProvider({ children }) {
   }, [isPending]);
 
   return (
-    <APIContext.Provider
+    <RecipeContext.Provider
       value={{
         recipes,
         url,
@@ -35,12 +35,12 @@ export function APIContextProvider({ children }) {
       }}
     >
       {children}
-    </APIContext.Provider>
+    </RecipeContext.Provider>
   );
 }
 
 export function useAPI() {
-  const context = useContext(APIContext);
+  const context = useContext(RecipeContext);
   if (context === undefined) {
     throw new Error("Context must be used within a Provider");
   }

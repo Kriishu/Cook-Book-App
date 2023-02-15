@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAPI } from "./context/useContext"
+import { useAPI } from "./context/Context"
 import "./styles/RecipeStyle.css"
 
 const RecipeList = () => {

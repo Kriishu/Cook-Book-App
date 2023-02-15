@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useNavigate } from "react-router-dom";
-import { useAPI } from "../context/useContext";
+import { useAPI } from "../context/Context";
 
 const CreateRecipe = () => {
   const [title, setTitle] = useState('');

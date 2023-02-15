@@ -2,13 +2,13 @@ import './components/styles/App.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/pages/Home';
-import { APIContextProvider } from './components/context/useContext';
+import { RecipeContextProvider } from './components/context/Context';
 import RecipeDetails from './components/pages/RecipeDetails';
 import CreateRecipe from './components/pages/CreateRecipe';
 
 function App() {
   return (
-    <APIContextProvider>
+    <RecipeContextProvider>
     <Router>
       <Navbar/>
       <Routes>
@@ -17,7 +17,7 @@ function App() {
         <Route path="/recipes/:id" element={<RecipeDetails/>} />
       </Routes>
     </Router>
-    </APIContextProvider>
+    </RecipeContextProvider>
   );
 }
 
