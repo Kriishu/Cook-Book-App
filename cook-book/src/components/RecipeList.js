@@ -1,37 +1,36 @@
-import React, { useContext } from 'react';
-import { RecipeContext } from './context/RecipeContext';
-import './RecipeStyle.css';
-import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useAPI } from "./context/useContext"
+import "./styles/RecipeStyle.css"
 
+const RecipeList = () => {
+    const {recipes,query} = useAPI()
 
-function RecipeCard({ recipe }) {
-
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/recipe/${recipe.id}`);
-  };
-
-  return (
-    <div className="recipe-card">
-      <h2>{recipe.name}</h2>
-      <p>Cooking Time: {recipe.cookingTime} minutes</p>
-      <p>{recipe.description}</p>
-      <button className="cook-button" onClick={handleClick}>Cook This</button>
-    </div>
-  );
-}
-
-function RecipeList() {
-  const { recipes } = useContext(RecipeContext);
-
-  return (
-    <div className="recipe-list">
-      {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
-      ))}
-    </div>
-  );
+    return(
+        <div>
+            {
+                recipes.filter(recipes => {
+                    if(query === ''){
+                        return recipes
+                    } else if (recipes.title.toLowerCase().includes(query.toLowerCase())){
+                        return recipes
+                    }
+                }).map((recipe) => {
+                    return(
+                      <div className="recipe-list">
+                        <div className="recipe-card" key={recipe.id}>
+                        <h1>{recipe.title}</h1>
+                        <h2>{recipe.time}: min</h2>
+                        <p>{recipe.description}</p>
+                        <Link to={`/recipes/${recipe.id}`}>
+                            <button className="cook-button">Cook This!</button>
+                        </Link>
+                        </div>
+                        </div>
+                    )                
+                })
+            }
+        </div>
+    )
 }
 
 export default RecipeList;

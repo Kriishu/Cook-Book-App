@@ -1,25 +1,24 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
-import Home from "./components/pages/Home";
-import Navbar from "./components/Navbar";
-import RecipeDetails from "./components/pages/RecipeDetails";
-
-
+import './components/styles/App.css';
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/pages/Home';
+import { APIContextProvider } from './components/context/useContext';
+import RecipeDetails from './components/pages/RecipeDetails';
+import CreateRecipe from './components/pages/CreateRecipe';
 
 function App() {
   return (
-    <>
-    <Navbar/>
-      <Router>
-        <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/recipe/:id" element={<RecipeDetails/>} />
-        </Routes>
-      </Router>
-    </>
+    <APIContextProvider>
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/create" element={<CreateRecipe/>} />
+        <Route path="/recipes/:id" element={<RecipeDetails/>} />
+      </Routes>
+    </Router>
+    </APIContextProvider>
   );
 }
-
 
 export default App;

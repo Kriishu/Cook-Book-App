@@ -1,0 +1,35 @@
+{
+  "recipe":
+[
+  {
+    "id": 0,
+    "name": "Tea",
+    "cookingTime": 5,
+    "description": "Classic Tea",
+    "ingredients": "b"
+  },
+
+  {
+    "id": 1,
+    "name": "Spaghetti Bolognese",
+    "cookingTime": 30,
+    "description": "A classic pasta dish made with a rich meat sauce.",
+    "ingredients": "b"
+  },
+  {
+    "id": 2,
+    "name": "Pancakes",
+    "cookingTime": 20,
+    "description": "A stack of fluffy, golden-brown pancakes served with syrup and butter.",
+    "ingredients": "b"
+  },
+  {
+    "id": 3,
+    "name": "Chicken Stir-Fry",
+    "cookingTime": 25,
+    "description": "A quick and healthy one-pan meal with veggies and your choice of protein.",
+    "ingredients": "b"
+  }
+]
+
+}

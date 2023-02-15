@@ -1,15 +1,18 @@
 import React from "react";
-import "../../App.css";
-import { RecipeProvider } from "../context/RecipeContext";
+import "../styles/App.css";
 import RecipeList from "../RecipeList";
 
 
+
 function Home() {
+  
   return (
     <>
-    <RecipeProvider>
-    <RecipeList/>
-    </RecipeProvider>
+     
+      <div className="App">
+        <RecipeList />
+      </div>
+   
     </>
   );
 }

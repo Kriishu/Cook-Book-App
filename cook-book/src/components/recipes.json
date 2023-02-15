@@ -1,24 +1,28 @@
-
-[
-
-
-  {
-    "id": 1,
-    "name": "Spaghetti Bolognese",
-    "cookingTime": 30,
-    "description": "A classic pasta dish made with a rich meat sauce."
-  },
-  {
-    "id": 2,
-    "name": "Pancakes",
-    "cookingTime": 20,
-    "description": "A stack of fluffy, golden-brown pancakes served with syrup and butter."
-  },
-  {
-    "id": 3,
-    "name": "Chicken Stir-Fry",
-    "cookingTime": 25,
-    "description": "A quick and healthy one-pan meal with veggies and your choice of protein."
-  }
-]
-
+{
+  "recipes": [
+    {
+      "title": "Ham Sandwitch",
+      "listIngredients": [
+        "Bread",
+        "Ham",
+        "butter",
+        "cheese"
+      ],
+      "method": "Cut the bread, put butter on bread, put ham & cheese",
+      "time": "5",
+      "description": "A simple sandwitch",
+      "id": 1
+    },
+    {
+      "title": "Spaghetti and Meatballs",
+      "listIngredients": [
+        "1 pound spaghetti",
+        "1 pound ground beef"
+      ],
+      "method": "1. In a large pot, bring salted water to a boil. Cook spaghetti according to package instructions.\n\n2. In a large bowl, mix together ground beef, breadcrumbs, egg, garlic, salt, pepper, and parsley. Roll mixture into meatballs.",
+      "time": "20",
+      "description": "A classic Italian dish that's sure to satisfy",
+      "id": 2
+    }
+  ]
+}

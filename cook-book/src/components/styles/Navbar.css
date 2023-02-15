@@ -36,4 +36,10 @@
   .navbar-app-name {
     font-size: 40px;
   }
+
+  .Create-Recipe:hover {
+    color: white;
+    background-color: #333;
+
+  }
   

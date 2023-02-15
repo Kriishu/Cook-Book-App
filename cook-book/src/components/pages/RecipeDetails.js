@@ -1,24 +1,30 @@
-import Recipes from "../recipes.json"
-import React from 'react';
-import { useParams } from "react-router-dom";
-import "../RecipeDetails.css"
+import {useParams } from "react-router-dom";
+import { useAPI } from "../context/useContext";
+import useFetch from "../useFetch";
+import "../styles/RecipeDetails.css"
+const RecipeDetails = () => {
+    const {id} = useParams()
+    const {url} = useAPI()
+    const {data: recipe, error, isPending} = useFetch(url + id)
 
-function RecipeDetails() {
+    return (
+        <div className="recipe-details">
+            {isPending &&<div>Loading...</div>}
+            {error &&<div>{error}</div>}
+            {recipe && (
+                <article className="recipe-container">
+                    <h1 className="recipe-name">Name of Recipe: {recipe.title}</h1>
+                    <h2 className="recipe-time">Time to Cook: {recipe.time} minutes.</h2>
+                    <p className="recipe-method">How to Cook: {recipe.method}</p>
+                    <div className="recipe-description">About the Recipe: {recipe.description}</div>
+                    <div className="recipe-ingredienants">What you need for the Recipe: {recipe.listIngredients && recipe.listIngredients.join(', ') }</div>
+                    
+                    
 
-
-  const { id } = useParams();
-  const recipe = Recipes.find(recipe => recipe.id === Number(id));
-  
-
-
-  return (
-    <div className="recipe-details">
-       <h1>Cook: {recipe.name}</h1>
-       <p>Time to cook: {recipe.cookingTime} Minutes</p>
-       <p>description: {recipe.description}</p>
-
-    </div>
-  )
+                </article>
+            )}
+        </div>
+    );
 }
 
-export default RecipeDetails
+export default RecipeDetails;
