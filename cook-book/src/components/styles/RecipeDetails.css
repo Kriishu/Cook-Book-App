@@ -46,6 +46,16 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  
+  button {
+    
+      margin: 10px 10px;
+      padding: 10px 20px;
+      background-color: lightgray;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid rgb(14, 2, 2);
+    
+  }
 
   

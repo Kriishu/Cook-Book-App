@@ -1,7 +1,7 @@
 import React from 'react'
 import "./styles/Navbar.css"
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setQuery } from './redux/slices/querySlice';
 
 function NavBar() {
@@ -14,9 +14,6 @@ function NavBar() {
     navigate('/');
   };
 
-  const query = useSelector(
-    (state) => state.recipeFilter.query
-)
 
 const dispatch = useDispatch()
  

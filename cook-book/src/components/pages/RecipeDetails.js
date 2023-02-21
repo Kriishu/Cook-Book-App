@@ -1,36 +1,49 @@
 import { useNavigate, useParams } from "react-router-dom";
-import useFetch from '../data/Fetch'; 
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import '../styles/RecipeDetails.css'
 
 
 const RecipeDetails = () => {
 
+    const [recipe, setRecipe] = useState([])
+    const [listIng, setListIng] = useState([])
+
     const nav = useNavigate()
     const { id } = useParams()
+    useEffect(() => {
+        getRecipe();
+    }, []);
 
-    const url = useSelector(
-        (state) => state.url.url
-    )
+    const getRecipe = async () => {
+        const response = await axios.get(`http://localhost:3000/recipes/${id}`);
+        setRecipe(response.data)
+        setListIng(response.data.listIngredients)
+      };
 
-    const { data: recipe, error, isPending } = useFetch(url + id);
+      const handleClick = async () => {
+        try {
+            await axios.delete(`http://localhost:3000/recipes/${id}`);
+            nav("/")
+          } catch (error) {
+            console.log(error);
+          }
+        };
 
    
  
     return ( 
         <div className="recipe-container">
-            { isPending && <div>Loading...</div>}
-            { error && <div>{error}</div>}
-            { recipe && (
+            
                 <article>
                     <h1>{recipe.title}</h1>
                     <p className="recipe-ingredienants">
-                    Ingrediants: {recipe.listIngredients.join(',')}</p>
+                    Ingrediants: {listIng.join(", ")}</p>
                     <h1>How to cook</h1>
                     <div className="recipe-description">{recipe.method}</div>
                     <p>Time to cook: {recipe.time} minutes</p>
+                    <button onClick={handleClick}>Delete</button>
                 </article>
-            )}
         </div>
      );
 }

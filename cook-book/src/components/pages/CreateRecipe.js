@@ -1,28 +1,25 @@
 import { useState } from "react";
 import {useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setPending } from "../redux/slices/pendingSlice";
+import { useSelector } from "react-redux";
 import "../styles/CreateRecipe.css"
+import axios from "axios";
 
 
 const CreateRecipe = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [description, setDescription] = useState('');
   const [time, setTime] = useState('');
   const [method, setMethod] = useState('');
   const [listIngredients, setListIngredients] = useState([])
   const nav = useNavigate();
   
 
-  const url = useSelector(
-    (state) => state.url.url
-)
+
 const isPending = useSelector(
     (state) => state.pending
 )
 
-const dispatch = useDispatch()
+
 
 
   const handleIngredients = (e) => {
@@ -31,19 +28,20 @@ const dispatch = useDispatch()
     setIngredients('')
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const recipe = { title, listIngredients, method, time, description};
-    dispatch(setPending(true));
-    fetch(url, {
-        method: 'POST',
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify(recipe)
-    }).then(() =>{
-        dispatch(setPending(false));
+    try {
+        await axios.post("http://localhost:3000/recipes", {
+            title,
+            listIngredients,
+            method,
+            time,
+        })
         nav('/')
-    })
-  }
+    } catch (error) {
+        console.log(error)
+    }
+}
 
   return (
     <div className="create">
@@ -55,13 +53,6 @@ const dispatch = useDispatch()
           required 
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-        />
-        <label className="description">Description:</label>
-        <input 
-          type="text" 
-          required 
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
         />
         <label className="ingredients">Recipe ingredients:</label>
         <input

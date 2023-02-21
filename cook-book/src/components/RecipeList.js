@@ -1,21 +1,28 @@
 import { Link } from "react-router-dom";
 import "./styles/RecipeStyle.css"
-import { getRecipes } from "./redux/slices/recipeSlice"
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 const RecipeList = () => {
-    const { recipes, loading } = useSelector((state) => state.recipe)
-    const query = useSelector(
-        (state) => state.recipeFilter.query
-    )
-    const dispatch = useDispatch()
+    const [ recipes, setRecipes] = useState([])
 
 
 
     useEffect(() => {
-        dispatch(getRecipes())
+        getRecipes()
     }, [])
+
+    const getRecipes = async () => {
+        const response = await axios.get("http://localhost:3000/recipes")
+        setRecipes(response.data)
+    }
+
+    const { loading } = useSelector((state) => state.recipe)
+    const query = useSelector(
+        (state) => state.recipeFilter.query
+    )
+
 
     if(loading) {
         return <h2>Loading...</h2>
@@ -33,11 +40,11 @@ const RecipeList = () => {
                 }).map((recipe) => {
                     return(
                       <div className="recipe-list">
-                        <div className="recipe-card" key={recipe.id}>
-                        <h1>{recipe.title}</h1>
-                        <h2>{recipe.time}: min</h2>
-                        <p>{recipe.description}</p>
-                        <Link to={`/recipes/${recipe.id}`}>
+                        <div className="recipe-card" key={recipe._id}>
+                        <h1 className="recipe-title">{recipe.title}</h1>
+                        <h2 className="recipe-time">{recipe.time}: min</h2>
+                        <p className="recipe-method">{recipe.method}</p>
+                        <Link to={`/recipes/${recipe._id}`}>
                             <button className="cook-button">Cook This!</button>
                         </Link>
                         </div>
