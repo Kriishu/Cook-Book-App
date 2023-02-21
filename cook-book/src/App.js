@@ -2,14 +2,15 @@ import './components/styles/App.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/pages/Home';
-import { RecipeContextProvider } from './components/context/Context';
+import { Provider } from 'react-redux';
+import { store } from './components/redux/store';
 import RecipeDetails from './components/pages/RecipeDetails';
 import CreateRecipe from './components/pages/CreateRecipe';
 
 
 function App() {
   return (
-    <RecipeContextProvider>
+    <Provider store={store}>
       
     <Router>
       <Navbar/>
@@ -20,7 +21,7 @@ function App() {
       </Routes>
     </Router>
     
-    </RecipeContextProvider>
+    </Provider>
   );
 }
 

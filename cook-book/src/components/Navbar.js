@@ -1,7 +1,8 @@
 import React from 'react'
 import "./styles/Navbar.css"
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch, useSelector } from "react-redux";
+import { setQuery } from './redux/slices/querySlice';
 
 function NavBar() {
 
@@ -12,6 +13,12 @@ function NavBar() {
   const home = () => {
     navigate('/');
   };
+
+  const query = useSelector(
+    (state) => state.recipeFilter.query
+)
+
+const dispatch = useDispatch()
  
 
   return (
@@ -19,8 +26,8 @@ function NavBar() {
       <div className="navbar-app-name" onClick={home}>Cook Book
       </div>
       <div className="navbar-search">
-        <input type="text" placeholder="Search" />
-        <button className='Create-Recipe' onClick={createRecipe} >Create Recipe</button>
+      <input placeholder="Find a recipe" onChange={(e) => dispatch(setQuery(e.target.value))}></input>
+      <button className='Create-Recipe' onClick={createRecipe} >Create Recipe</button>
       </div>
      
     </nav>

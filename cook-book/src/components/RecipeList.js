@@ -1,9 +1,25 @@
 import { Link } from "react-router-dom";
-import { useAPI } from "./context/Context"
 import "./styles/RecipeStyle.css"
+import { getRecipes } from "./redux/slices/recipeSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
 
 const RecipeList = () => {
-    const {recipes,query} = useAPI()
+    const { recipes, loading } = useSelector((state) => state.recipe)
+    const query = useSelector(
+        (state) => state.recipeFilter.query
+    )
+    const dispatch = useDispatch()
+
+
+
+    useEffect(() => {
+        dispatch(getRecipes())
+    }, [])
+
+    if(loading) {
+        return <h2>Loading...</h2>
+    }
 
     return(
         <div>
